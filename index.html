@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131c">
+  <link rel="icon" href="data:,">
+  <title>NEON//BREAK — Afterhours Protocol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="world3d" aria-label="NEON//BREAK action arena"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="Neon Break home"><span class="mark">N</span><span>NEON<span class="slash">//</span>BREAK</span></a>
+      <div class="mission"><span class="live-dot"></span><span>AFTERHOURS PROTOCOL</span><i></i><b>SECTOR 06</b></div>
+      <button class="sound-btn" id="soundBtn" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </header>
+
+    <section class="mission-card">
+      <div class="eyebrow"><span>LIVE OPERATION</span><span class="grade">S</span></div>
+      <h1>Clear the<br><em>overpass.</em></h1>
+      <p>Hostile signals detected. Keep moving, agent.</p>
+      <div class="wave-line"><span id="waveLabel">WAVE 01</span><span id="enemyCount">04 HOSTILES</span></div>
+      <div class="wave-track"><span id="waveFill"></span></div>
+      <div class="mission-foot"><span>REWARD</span><b>+<span id="rewardCount">000</span> CRED</b></div>
+    </section>
+
+    <div class="target-card" id="targetCard"><div class="target-top"><span class="target-icon">◈</span><span id="targetName">RIFT HOUND</span><span class="target-level">LV.01</span></div><div class="target-track"><span id="targetHealth"></span></div></div>
+
+    <div class="player-hud">
+      <div class="agent-line"><span class="agent-number">01</span><div><small>FIELD AGENT</small><strong>KAITO</strong></div><span class="agent-type">STRIKER</span></div>
+      <div class="bar-label"><span>VITALS</span><b id="healthText">100 / 100</b></div>
+      <div class="health-track"><span id="healthFill"></span></div>
+      <div class="bar-label energy-label"><span>EX DRIVE</span><b id="energyText">0%</b></div>
+      <div class="energy-track"><span id="energyFill"></span></div>
+    </div>
+
+    <div class="combo" id="combo"><strong id="comboNumber">0</strong><span>HIT<br>CHAIN</span></div>
+    <div class="center-message" id="centerMessage"><span id="messageText">READY</span></div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <div class="damage-flash" id="damageFlash"></div>
+
+    <div class="control-hint"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE</span><span><kbd>J</kbd> ATTACK</span><span><kbd>K</kbd> SKILL</span><span><kbd>SPACE</kbd> DODGE</span><span><kbd>R</kbd> EX DRIVE</span></div>
+    <div class="touch-controls" aria-label="Touch controls">
+      <div class="touch-pad"><button data-dir="up">▲</button><div><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div></div>
+      <div class="touch-actions"><button id="touchDodge" class="action-dodge">DODGE</button><button id="touchSkill" class="action-skill">SKILL<small>K</small></button><button id="touchAttack" class="action-attack">ATTACK<small>J</small></button></div>
+    </div>
+
+    <div class="overlay" id="startOverlay"><div class="intro-card"><div class="intro-top"><span>ORIGINAL ACTION RPG</span><span>BUILD 06.09</span></div><div class="intro-title"><span class="intro-mark">N</span><div><small>WELCOME TO THE NIGHT SHIFT</small><h2>NEON<span>//</span>BREAK</h2></div></div><p>When the city lights flicker, something slips through. Take the streets back — one stylish combo at a time.</p><div class="agent-select"><span class="select-label">DEPLOYED AGENT</span><div class="agent-choice"><div class="portrait">K</div><div><b>KAITO</b><small>Close-range striker · EX Drive specialist</small></div><span class="selected">SELECTED</span></div></div><div class="howto"><div><b>01</b><span>Chain quick strikes<br><small>J · J · J</small></span></div><div><b>02</b><span>Break their guard<br><small>K · skill</small></span></div><div><b>03</b><span>Evade & counter<br><small>SPACE · R ultimate</small></span></div></div><button class="start-btn" id="playBtn">DEPLOY TO SECTOR <span>↗</span></button><div class="intro-note">WASD TO MOVE · SPACE TO DODGE · ESC TO PAUSE</div></div></div>
+    <div class="pause-overlay hidden" id="pauseOverlay"><div class="pause-card"><span class="pause-symbol">Ⅱ</span><small>OPERATION PAUSED</small><h2>Catch your breath.</h2><p>The city can wait a second.</p><button class="start-btn" id="resumeBtn">BACK TO THE FIGHT <span>↗</span></button></div></div>
+    <div class="result-overlay hidden" id="resultOverlay"><div class="pause-card"><span class="pause-symbol">✦</span><small id="resultEyebrow">SECTOR CLEARED</small><h2 id="resultTitle">Clean work.</h2><p id="resultCopy">The overpass is quiet. For now.</p><button class="start-btn" id="continueBtn">NEXT WAVE <span>↗</span></button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
